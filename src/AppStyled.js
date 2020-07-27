@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
     display:flex;
-    background-color:red;
     height:100vh;
 `;
 
@@ -20,5 +19,6 @@ export const Menu = styled.div`
 export const PageBody = styled.div`
     display:flex;
     flex:1;
-    background-color:blue;
+    background-color:#009324;
+    background-image: url('/assets/bg.png');
 `;

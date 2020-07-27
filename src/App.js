@@ -3,8 +3,10 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { useSelector } from 'react-redux';
 
 import {Container, Menu, PageBody } from './AppStyled';
-
+import PrivateRoute from './components/PrivateRoute';
 import MenuItem from './components/MenuItem';
+import Cart from './components/Cart';
+
 
 
 import HomeScreen from './pages/HomeScreen';
@@ -29,8 +31,15 @@ export default () => {
                     <Route path="/tela2/:nome">
                         <Tela2Screen />
                     </Route>
+                    <PrivateRoute path="/orders">
+                        <div><h1>Tela de Pedidos</h1></div>
+                    </PrivateRoute> 
+                    <PrivateRoute path="/profile">
+                        <div><h1>Tela de Perfil</h1></div>
+                    </PrivateRoute>
                 </Switch>
             </PageBody>
+            <Cart/>
         </Container>      
         </BrowserRouter>
     );
