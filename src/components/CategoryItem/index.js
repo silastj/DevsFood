@@ -7,10 +7,13 @@ export default ({data, activeCategory, setActiveCategory}) => {
         setActiveCategory(data.id);
     }
     return (
-            <Container             
+            <Container 
+
                 active={activeCategory}
                 id={data.id}
                 onClick={handleCategoryClick}
+                data-tip={data.name}
+                data-for="tip-top"
                 >
                 <CategoryImage src={data.image}/>
             </Container>
