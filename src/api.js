@@ -9,7 +9,14 @@ export default {
         const json = await res.json();
 
         return(json);
+    },
+    getProducts: async () => {
+        //Pegando os Products e dentro do Conchetes [ aqui é a filtragem ]
+        //GET /api/products ([search, page, category])
+        const res = await fetch(BASE+'/products');
+        //RESPOSTA
+        const json = await res.json();
 
-
+        return(json);
     }
 };

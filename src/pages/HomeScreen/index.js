@@ -1,18 +1,32 @@
 import React,{ useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
-import { Container, CategoryArea , CategoryList} from './styled';
+import { Container, CategoryArea , CategoryList, ProductArea, ProductList} from './styled';
 import ReactTooltip from 'react-tooltip';
 
 import Header from '../../components/Header';
 import api from '../../api';
 import CategoryItem from '../../components/CategoryItem';
+import ProductItem from '../../components/ProductItem';
 
 export default () => {
     const history = useHistory();
     const [ headerSearch, setHeaderSearch ] = useState('');
     const [ categories, setCategories ] = useState([]);
+    const [ products, setProducts ] = useState([]);
 
     const [activeCategory, setActiveCategory ] = useState(0);
+
+    //Criaremos essa função do lado de fora, 
+    //pra facilitar quando eu precisar usar na paginação ou busca eu apenas chamar a função criada
+    //Mesmo procedimento cque fiz abaixono getCategories
+    const getProducts = async () => {
+        const prods = await api.getProducts();
+        if(prods.error === ''){
+            //SETANDO O CAMINHO PARA SER EXIBIDO SE NAO TIVER ERRO ACIMA
+            setProducts(prods.result.data);
+        }
+
+    }
 
     useEffect(() => {
         //Ele precisar ser asycroni para receber a api
@@ -35,7 +49,7 @@ export default () => {
 
 
     useEffect(()=> {
-
+        getProducts();
     }, [activeCategory]);
    
 
@@ -66,7 +80,22 @@ export default () => {
                         ))}
                     </CategoryList>
                 </CategoryArea>           
-            }         
+            }    
+
+            {/* AREA DOS PRODUTOS*/}
+            {/* SE TIVER PRODUTOS PARA SER EXIBIDO MOSTRAREMOS ESSA AREA ABAIXO */}
+            {products.length > 0 &&
+                <ProductArea>
+                    <ProductList>
+                        {products.map((item, index)=> (
+                            <ProductItem 
+                                key={index}
+                                data={item}                            
+                    />
+                        ))}
+                    </ProductList>
+                </ProductArea>
+            }
         </Container>
     );
 }

@@ -22,3 +22,8 @@ export const CategoryList = styled.div`
 export const CategoryItem = styled.div`
    width:82px;  
 `;
+export const ProductArea = styled.div``;
+
+
+
+export const ProductList = styled.div``;

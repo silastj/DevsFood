@@ -12,3 +12,7 @@ id= Nome do tooltip
 place= A posicão do tooltip
 effect= o efeito percorrendo junto(float) com o mouse ou fixo(solid)
 
+----------------------------------------------------------------------------------
+Pegando os Produtos
+Configuramos o arquivo da API e criaremos uma funcao getProducts
+
