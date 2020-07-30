@@ -1,11 +1,23 @@
 import React from 'react';
-import {Container} from './styled';
+import {Container, ProductPhotoArea, ProductInfoArea,ProductButtonArea , ProductPhoto, ProductName, ProductPrice, ProductIngredientes, ProductButton} from './styled';
 
-export default () => {
+export default ({data}) => {
     return (
         <Container>
+            <ProductPhotoArea>
+                <ProductPhoto src={data.image}/>
+            </ProductPhotoArea>
 
-            
+            <ProductInfoArea>
+                <ProductName>{data.name}</ProductName>
+                <ProductPrice>$ {data.price}</ProductPrice>
+                <ProductIngredientes>{data.ingredients}</ProductIngredientes>
+            </ProductInfoArea>
+
+            <ProductButtonArea>
+                <ProductButton src="/assets/next.png"/>
+            </ProductButtonArea>
+
         </Container>
 
     );

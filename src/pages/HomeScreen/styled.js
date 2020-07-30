@@ -26,4 +26,9 @@ export const ProductArea = styled.div``;
 
 
 
-export const ProductList = styled.div``;
+export const ProductList = styled.div`
+    display:flex;
+    flex-wrap:wrap;
+
+
+`;
