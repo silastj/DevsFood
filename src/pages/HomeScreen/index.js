@@ -8,6 +8,10 @@ import api from '../../api';
 import CategoryItem from '../../components/CategoryItem';
 import ProductItem from '../../components/ProductItem';
 
+
+//Timer do search
+let searchTimer = null;
+
 export default () => {
     const history = useHistory();
     const [ headerSearch, setHeaderSearch ] = useState('');
@@ -17,6 +21,7 @@ export default () => {
 
     const [activeCategory, setActiveCategory ] = useState(0);
     const [ activePage, setActivePage ] = useState(0);
+    const [ activeSearch, setActiveSearch ] = useState(''); 
 
     //Criaremos essa função do lado de fora, 
     //pra facilitar quando eu precisar usar na paginação ou busca eu apenas chamar a função criada
@@ -31,6 +36,23 @@ export default () => {
         }
 
     }
+
+    // Ficaremos Monitorando o headerSearch e com temporizado setTimeout de 2s, if headerSearch for 
+    // diferente de vazio setar o headerSearch
+    useEffect(()=> {
+
+        // Abaixo estou limpando o timer para não duplicar varios timer
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(()=> {
+
+            // if(headerSearch != ''){
+                setActiveSearch(headerSearch);
+                // console.log(headerSearch);
+            // }
+            }, 2000)
+        },[headerSearch]);
+
+
 
     useEffect(() => {
         //Ele precisar ser asycroni para receber a api
@@ -49,14 +71,15 @@ export default () => {
         }
       
         getCategories();
-    }, []);
+
+         }, []);
 
 
     useEffect(()=> {
-        // Podemos zerar antes de carregar o array mas não ficou legal
-        // setProducts([]);
+        // Podemos zerar antes de carregar o array mas não ficou legal, está Habilitado.
+        setProducts([]);
         getProducts();
-    }, [activeCategory, activePage]);
+    }, [activeCategory, activePage, activeSearch]);
    
 
     return (
@@ -110,8 +133,8 @@ export default () => {
             {totalPages > 0 &&
                   <ProductPaginationArea>
 
-                      {/* Dentro do array é o ( totalPages) , apenas estou simulando que tem 9 pag*/}
-                      {Array(9).fill(0).map((item, index) => (
+                      {/* Dentro do array é o ( totalPages ou 9 para aparecer pag) */}
+                      {Array(totalPages).fill(0).map((item, index) => (
                             <ProductPaginationItem
                                  key={index} 
                                  active={activePage}

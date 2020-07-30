@@ -29,7 +29,6 @@ export const ProductList = styled.div`
     flex-wrap:wrap;
 `;
 export const ProductPaginationArea = styled.div`
-
     display:flex;
     flex-wrap:wrap;
     padding:20px;
