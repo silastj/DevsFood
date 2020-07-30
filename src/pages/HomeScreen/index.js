@@ -1,6 +1,6 @@
 import React,{ useState, useEffect } from 'react';
 import { useHistory } from "react-router-dom";
-import { Container, CategoryArea , CategoryList, ProductArea, ProductList} from './styled';
+import { Container, CategoryArea , CategoryList, ProductArea, ProductList, ProductPaginationArea, ProductPaginationItem} from './styled';
 import ReactTooltip from 'react-tooltip';
 
 import Header from '../../components/Header';
@@ -13,8 +13,10 @@ export default () => {
     const [ headerSearch, setHeaderSearch ] = useState('');
     const [ categories, setCategories ] = useState([]);
     const [ products, setProducts ] = useState([]);
+    const [ totalPages, setTotalPages] = useState(0);
 
     const [activeCategory, setActiveCategory ] = useState(0);
+    const [ activePage, setActivePage ] = useState(0);
 
     //Criaremos essa função do lado de fora, 
     //pra facilitar quando eu precisar usar na paginação ou busca eu apenas chamar a função criada
@@ -24,6 +26,8 @@ export default () => {
         if(prods.error === ''){
             //SETANDO O CAMINHO PARA SER EXIBIDO SE NAO TIVER ERRO ACIMA
             setProducts(prods.result.data);
+            setTotalPages(prods.result.pages);
+            setActivePage(prods.result.page);
         }
 
     }
@@ -49,8 +53,10 @@ export default () => {
 
 
     useEffect(()=> {
+        // Podemos zerar antes de carregar o array mas não ficou legal
+        // setProducts([]);
         getProducts();
-    }, [activeCategory]);
+    }, [activeCategory, activePage]);
    
 
     return (
@@ -82,6 +88,8 @@ export default () => {
                 </CategoryArea>           
             }    
 
+
+
             {/* AREA DOS PRODUTOS*/}
             {/* SE TIVER PRODUTOS PARA SER EXIBIDO MOSTRAREMOS ESSA AREA ABAIXO */}
             {products.length > 0 &&
@@ -96,6 +104,28 @@ export default () => {
                     </ProductList>
                 </ProductArea>
             }
+
+
+            {/* Paginação */}
+            {totalPages > 0 &&
+                  <ProductPaginationArea>
+
+                      {/* Dentro do array é o ( totalPages) , apenas estou simulando que tem 9 pag*/}
+                      {Array(9).fill(0).map((item, index) => (
+                            <ProductPaginationItem
+                                 key={index} 
+                                 active={activePage}
+                                 current={index + 1}
+                                 onClick={()=> setActivePage(index+1)}
+                                 >
+                                {index + 1}
+                            </ProductPaginationItem>
+                      ))}
+                     
+                  </ProductPaginationArea>
+            
+            }
+      
         </Container>
     );
 }
