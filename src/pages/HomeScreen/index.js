@@ -20,14 +20,14 @@ export default () => {
     const [ totalPages, setTotalPages] = useState(0);
 
     const [activeCategory, setActiveCategory ] = useState(0);
-    const [ activePage, setActivePage ] = useState(0);
+    const [ activePage, setActivePage ] = useState(1);
     const [ activeSearch, setActiveSearch ] = useState(''); 
 
     //Criaremos essa função do lado de fora, 
     //pra facilitar quando eu precisar usar na paginação ou busca eu apenas chamar a função criada
     //Mesmo procedimento cque fiz abaixono getCategories
     const getProducts = async () => {
-        const prods = await api.getProducts();
+        const prods = await api.getProducts(activeCategory, activePage, activeSearch);
         if(prods.error === ''){
             //SETANDO O CAMINHO PARA SER EXIBIDO SE NAO TIVER ERRO ACIMA
             setProducts(prods.result.data);
