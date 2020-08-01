@@ -9,6 +9,9 @@ import CategoryItem from '../../components/CategoryItem';
 import ProductItem from '../../components/ProductItem';
 import Modal from '../../components/Modal';
 
+import ModalProduct from '../../components/ModalProduct';
+
+
 
 //Timer do search
 let searchTimer = null;
@@ -20,7 +23,8 @@ export default () => {
     const [ products, setProducts ] = useState([]);
     const [ totalPages, setTotalPages] = useState(0);
 
-    const [ modalStatus, setModalStatus ] = useState(true);
+    const [ modalStatus, setModalStatus ] = useState(false);
+    const [ modalData, setModalData ] = useState({});
 
     const [activeCategory, setActiveCategory ] = useState(0);
     const [ activePage, setActivePage ] = useState(1);
@@ -83,6 +87,13 @@ export default () => {
         setProducts([]);
         getProducts();
     }, [activeCategory, activePage, activeSearch]);
+
+
+    //CLICK DE CADA PRODUCT
+    const handleProductClick = (data) => {
+        setModalData(data);
+        setModalStatus(true);
+    }
    
 
     return (
@@ -124,7 +135,8 @@ export default () => {
                         {products.map((item, index)=> (
                             <ProductItem 
                                 key={index}
-                                data={item}                            
+                                data={item}    
+                                onClick={handleProductClick}                        
                     />
                         ))}
                     </ProductList>
@@ -151,9 +163,9 @@ export default () => {
                   </ProductPaginationArea>            
             }
             <Modal status={modalStatus} setStatus={setModalStatus}>
-                Conteudo do Modal
+               <ModalProduct data={modalData}/>
             </Modal>
-      
+               
         </Container>
     );
 }

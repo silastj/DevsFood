@@ -10,14 +10,15 @@ export const Container = styled.div`
     top:0;
     bottom:0;
     background-color: rgba(0,0,0, 0.7);
-    z-index:999;
-    
+    z-index:999;    
 `;
 
 export const ModalBody = styled.div`
-    width:300px;
-    height:300px;
+    max-width:100vw;
     background-color:#ffffff;
+    max-height:70vh;
+    overflow:auto;
+    border-radius:20px;
 `;
 
 
