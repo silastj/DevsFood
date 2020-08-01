@@ -1,8 +1,12 @@
 import React, {useState, useEffect }from 'react';
+import {useDispatch} from 'react-redux';
 import {Container, ProductArea,ProductButtons, ProductPhoto, ProductInfoArea, ProductDetails, ProductQuantityArea, ProductName, ProductPrice, ProductIngredientes, ProductNumber,ProductPriceQuant, ProductQtImage,ProductButton, ProductQuant, ProductPriceQ} from './styled';
 
 
 export default ({data, setStatus}) => {
+
+    const dispatch = useDispatch();
+
 
     const [qt, setQt] = useState(1);
 
@@ -24,6 +28,14 @@ export default ({data, setStatus}) => {
 
     const handleClickMais = () => {
         setQt(qt + 1)
+    }
+    const handleAddToCart = () => {
+        dispatch({
+            type: 'ADD_PRODUCT',
+            payload:{data, qt}
+
+        });
+        setStatus(false);
     }
 
 
@@ -57,7 +69,7 @@ export default ({data, setStatus}) => {
             </ProductArea>
             <ProductButtons>
                 <ProductButton small={true} onClick={handleClickFechar}>Cancelar</ProductButton>
-                <ProductButton>Adicionar o Carrinho</ProductButton>
+                <ProductButton onClick={handleAddToCart}>Adicionar o Carrinho</ProductButton>
             </ProductButtons>
         </Container>
     );
