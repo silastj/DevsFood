@@ -20,6 +20,16 @@ export const ProductPhoto = styled.img`
         &:hover{
             transform: scale(1.1);
             transition: all 0.7s cubic-bezier(0.25, 0.63, 0.09, 1.05);
+            border:none;
+        }
+        &:focus{
+            border:none;
+        }
+        &:active{
+            border:none;
+        }
+        &:visited{
+            border:none;
         }
    
 `;
@@ -90,6 +100,7 @@ export const ProductPriceQuant = styled.h3`
 export const ProductQtImage = styled.img`
     width:100%;
     height:auto;
+    cursor:pointer;
 `;
 
 export const ProductButtons = styled.div`
