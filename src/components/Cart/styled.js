@@ -17,7 +17,7 @@ export const CartHeader = styled.div`
     align-items:center;
     align-self:center;
     line-height:51px;
-    width:288px;
+    min-width:288px;
     cursor:pointer;
 `;
 export const CartIcon = styled.img`
@@ -33,35 +33,71 @@ export const CartText = styled.div`
 export const CartBody = styled.div`
    display:${props=> props.show ? 'flex': 'none'};
    transition: .4s ease;
-   border:1px solid red;
-   height:100px;
+   height:100%;
 
 `;
-export const ProductsArea = styled.div``;
+export const ProductsArea = styled.div`
+    width:100%;
+`;
 export const ProductItem = styled.div`
     display:flex;
+    border-bottom:1px solid #ffffff59;
+    padding-bottom:10px;
+    margin:0 14px;
+    align-items: center;
 `;
 export const ProductPhoto = styled.img`
     width:64px;
-    margin:0 14px;
+    margin:0px 14px 0px 0px;
+    border-radius:10px;
 `;
 export const ProductInfoArea = styled.div`
     flex:1;
 `;
-export const ProductName = styled.div``;
-export const ProductPrice = styled.div``;
+export const ProductName = styled.div`
+    font-size:15px;
+    color:#ffffff;
+    margin-bottom:5px;
+    font-weight:bold;
+
+`;
+export const ProductPrice = styled.div`
+    font-size:13px;
+    color:#ffffff;
+    margin-bottom:5px;
+`;
 export const ProductQuantArea = styled.div`
-    background-color:blue;
     display:flex;
+    justify-content:flex-end;
     align-items:center;
-    width:100%;
+    width:30%;
 `;
 
 export const ProductIcon = styled.img`
-    width:100%;
+    width:20px;
     height:auto;
     cursor:pointer;
+    
 `;
-export const ProductNumber = styled.div``;
+export const ProductNumber = styled.div`
+    margin:0 10px;
+    color:#ffffff;
+    font-size:13px;
+    font-weight:bold;
+`;
+export const ProductAreaEndereco = styled.div``;
+
+export const ProductTitleEnd = styled.div``;
+
+export const ProductEnderecoDice = styled.div``;
+
+export const ProductAreaEndIcon = styled.div``;
+
+export const ProductEndArea = styled.div``;
+
+export const ProductDescriEnd = styled.div``;
+
+
+
 
 

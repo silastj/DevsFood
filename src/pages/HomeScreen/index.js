@@ -102,7 +102,8 @@ export default () => {
           
             {categories.length > 0 &&
                 <CategoryArea>
-                    Selecione uma categoria({activeCategory} )
+                     {/* Selecione uma categoria({activeCategory} ) */}
+                    Selecione uma categoria
                     <CategoryList>
                         <CategoryItem
                         data={{
