@@ -8,6 +8,9 @@ export const CartArea = styled.div`
     right:40px;    
     max-height:80vh;
     border-radius:10px 10px 0 0;
+    @media screen and (max-width:425px){
+        right:2%;    
+    }
 `;
 
 

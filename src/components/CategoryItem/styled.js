@@ -13,11 +13,21 @@ export const Container = styled.div`
        transition: all ease .3s;
        filter: brightness(0.5);
    }
+   @media(max-width: 600px) {
+        margin-bottom:10px;
+        width:50px;
+        border-radius:4px;
+        margin-right:5px;
+    }
 `;
 
 export const CategoryImage = styled.img`
-    width:58px;
+    width:60px;
     height:auto;
     padding:12px;
+
+    @media(max-width: 600px) {
+        width:25px;
+    }
  
 `;

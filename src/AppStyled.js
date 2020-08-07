@@ -14,6 +14,10 @@ export const Menu = styled.div`
     align-items: center;
     justify-content: center;
 
+    @media screen and (max-width:600px){
+        width:55px;
+    }
+
 `;
 
 export const PageBody = styled.div`

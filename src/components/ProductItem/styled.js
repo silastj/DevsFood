@@ -19,12 +19,30 @@ export const Container = styled.div`
             transform: scale(1.1);
             transition: all 0.7s cubic-bezier(0.25, 0.63, 0.09, 1.05);
         }
+    @media screen and (max-width:600px){
+        max-width:100%;
+        height: auto;
+        margin-left:5px;
+    }
+    @media screen and (max-width:375px){
+        width:100%;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
 `;
 
 export const ProductPhotoArea = styled.div`
     margin-right:20px;
     width:100px;
     height:89px;    
+    @media screen and (max-width:600px){
+        margin-right:5px;
+    }
+    @media screen and (max-width:375px){
+        width:100%;
+        margin-bottom:5px;
+    }
 `;
 
 export const ProductInfoArea = styled.div`
@@ -40,14 +58,19 @@ export const ProductPhoto = styled.img`
     height:100%;
     object-fit:cover;
     border-radius:10px;
-    
-    
 
+    @media screen and (max-width:375px){
+        border-radius:5px;
+    }
 `;
 
 export const ProductButtonArea = styled.div`
     display:flex;
     justify-content:flex-end;
+
+    @media screen and (max-width:375px){
+        align-self:flex-end
+    }
 `;
 
 export const ProductName = styled.div`
@@ -69,5 +92,6 @@ export const ProductIngredientes = styled.div`
 
 export const ProductButton = styled.img`
     width:15px;
+ 
 `;
 

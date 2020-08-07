@@ -19,6 +19,13 @@ export const ModalBody = styled.div`
     max-height:70vh;
     overflow:auto;
     border-radius:20px;
+    @media screen and (max-width:768px){
+        height:55vh;
+        position:relative;        
+    }
+    @media screen and (max-width:375px){
+        max-width:90vw;
+    }
 `;
 
 

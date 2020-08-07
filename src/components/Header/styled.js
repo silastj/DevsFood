@@ -8,11 +8,20 @@ export const Container = styled.div`
     display:flex;
     justify-content:space-between;
     align-items:center;
+
+    @media(max-width: 600px) {
+        flex-wrap: wrap;
+        margin: 0;
+        border-radius:0 0 10px 0;
+        flex-direction:column;
+        align-items:flex-start;
+    }
 `;
 
 export const Logo = styled.img`
     width:220px;
     height:66px;
+
 `;
 
 export const SearchInput = styled.input`
@@ -33,5 +42,8 @@ export const SearchInput = styled.input`
 
     &:focus{
         cursor:text;
+    }
+    @media(max-width: 600px) {
+        margin-top:10px;
     }
 `;
