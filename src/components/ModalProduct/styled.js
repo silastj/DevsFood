@@ -12,8 +12,8 @@ export const ProductArea = styled.div`
 
     @media screen and (max-width:768px){
         flex-direction:column;
-        margin:0%;
-        
+        margin:0%;    
+        height:100%;    
     }
 `;
 export const ProductPhoto = styled.img`
@@ -166,9 +166,9 @@ export const ProductButton = styled.button`
     box-shadow:2px 2px 0px #0b490b3b;
 
     @media screen and (max-width:768px){
-        width:${props=>props.small ? '55px' : '200px'};
+        width:${props=>props.small ? '65px' : '195px'};
         height:${props=>props.small ? '30px' : '40px'};
-        font-size:${props=>props.small ? '10px' : '16px'};
+        font-size:${props=>props.small ? '10px' : '14px'};
         box-shadow:none;
     }
 `;

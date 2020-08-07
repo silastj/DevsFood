@@ -69,7 +69,9 @@ export const ProductButtonArea = styled.div`
     justify-content:flex-end;
 
     @media screen and (max-width:375px){
-        align-self:flex-end
+        align-self:flex-end;
+        max-width:15px;
+        height: 15px;
     }
 `;
 
@@ -91,7 +93,7 @@ export const ProductIngredientes = styled.div`
 `;
 
 export const ProductButton = styled.img`
-    width:15px;
- 
+    max-width:15px;
+    height: 15px;
 `;
 
